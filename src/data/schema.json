@@ -1,0 +1,27 @@
+{
+    "id": {
+        "name": "id",
+        "edit_type": "number",
+        "editable": false,
+        "rules": {
+            "allow_negative": false,
+            "increment": 1,
+            "floating_point": false
+        },
+        "group": "None",
+        "required": true,
+        "default_value": 0
+    },
+    "username": {
+        "name": "username",
+        "edit_type": "string",
+        "editable": true,
+        "rules": {
+            "allow_empty": false,
+            "regex": ""
+        },
+        "group": "None",
+        "required": true,
+        "default_value": "None"
+    }
+}
