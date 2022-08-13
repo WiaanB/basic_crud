@@ -1,9 +1,11 @@
 import './App.css';
+import Grid from './components/Grid'
+import Users from './data/users'
 
 function App() {
   return (
     <div className="App">
-      <h1>Hello World</h1>
+      <Grid Users={Users}/>
     </div>
   );
 }
