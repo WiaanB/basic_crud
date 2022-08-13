@@ -1,4 +1,4 @@
-{
+module.exports = {
     "id": {
         "name": "id",
         "edit_type": "number",
