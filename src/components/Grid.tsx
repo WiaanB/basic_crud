@@ -12,16 +12,24 @@ function Grid(props: {Users: User[]}) {
 
     function setupGridColumns() {
         let cols = grid_settings.columns ?? [];
-        cols.sort((a,b) => Number(a) - Number(b) ).map(col => {
-            let formattedCol:any = {
+        cols = cols.sort((a,b) => Number(a) - Number(b) ).map(col => {
+            let formattedCol: any = {
+                col_title: col.title ? col.title:col.field,
+                col_hidden: col.hidden ? col.hidden:false,
                 col_field: col.field,
                 col_type: col.type
             }
-            formattedCol.col_title = col.title ? col.title:col.field
-            formattedCol.col_hidden = col.hidden ? col.hidden:false
+            // format the title
+            formattedCol.col_title = formattedCol.col_title.charAt(0).toUpperCase() + formattedCol.col_title.slice(1)
+            switch (col.normalizer) {
+                case "uppercase":
+                    formattedCol.col_title = formattedCol.col_title.toUpperCase()
+                    break
+                default:
+                    break
+            }
             return formattedCol
         })
-        console.log({cols})
         setColumns(cols);
     }
     return (
@@ -29,7 +37,6 @@ function Grid(props: {Users: User[]}) {
             <div className="grid-container">
                 <div className="grid-columns" style={{ gridTemplateColumns: `repeat(${columns.filter((e:any) => e.hidden === false).length})` }}>
                     {columns.length && columns.map((col:any) => {
-                        console.log(col)
                         return <li>{col.col_title}</li>
                     })}
                 </div>
