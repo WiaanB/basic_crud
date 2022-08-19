@@ -7,3 +7,7 @@
 .grid-container {
   display: grid;
 }
+
+.grid-column-header {
+  list-style: none;
+}

@@ -37,7 +37,7 @@ function Grid(props: {Users: User[]}) {
             <div className="grid-container">
                 <div className="grid-columns" style={{ gridTemplateColumns: `repeat(${columns.filter((e:any) => e.hidden === false).length})` }}>
                     {columns.length && columns.map((col:any) => {
-                        return <li>{col.col_title}</li>
+                        return <li className="grid-column-header">{col.col_title}</li>
                     })}
                 </div>
             </div>
