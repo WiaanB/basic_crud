@@ -11,4 +11,5 @@ export interface User {
         period: number
     },
     hobbies: string[]
+    [key: string]: any
 }

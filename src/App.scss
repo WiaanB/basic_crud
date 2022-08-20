@@ -4,10 +4,17 @@
   padding: 0px;
 }
 
+// Grid Styling
 .grid-container {
   display: grid;
-  
-  .grid-column-header {
-    list-style: none;
+  border: solid 2px black;
+
+  .grid-columns {
+    display: grid;
+
+    .grid-column-header {
+      list-style: none;
+      border: solid 2px red;
+    }
   }
 }
