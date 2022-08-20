@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import Grid from './components/Grid'
 import Users from './data/users'
 
