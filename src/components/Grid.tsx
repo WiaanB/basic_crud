@@ -1,10 +1,11 @@
 import { User } from '../data/Types'
 import grid_settings from '../data/GridSettings'
 import { useEffect, useState } from 'react'
+import { flattenObject } from '../js/utility'
 
 function Grid(props: { Users: User[] }) {
-    const [columns, setColumns] = useState<any>([])
-    const [visibleColumns, setVisibleColumns] = useState<any>([])
+    const [columns, setColumns] = useState<{[key: string]: any}>([])
+    const [visibleColumns, setVisibleColumns] = useState<{[key: string]: any}>([])
 
     // setup of the basics of the grid
     useEffect(() => {
@@ -31,23 +32,24 @@ function Grid(props: { Users: User[] }) {
             }
             return formattedCol
         })
-        setVisibleColumns(cols.filter((e: any) => e.col_hidden === false))
+        setVisibleColumns(cols.filter((e: {[key: string]: any}) => e.col_hidden === false))
         setColumns(cols);
     }
     return (
         <div className="grid-main">
             <div className="grid-container">
                 <div className="grid-columns" style={{ gridTemplateColumns: `repeat(${visibleColumns.length}, 1fr)` }}>
-                    {visibleColumns.length && visibleColumns.map((col: any) => {
+                    {visibleColumns.length && visibleColumns.map((col: {[key: string]: any}) => {
                         return <li key={`${col.col_title}-header`} className="grid-column-header">{col.col_title}</li>
                     })}
                 </div>
                 <div className="grid-column-values">
                     {props.Users && props.Users.length && props.Users.map((user: User) => {
+                        let flatUser: {[key: string]: any} = flattenObject(user)
                         return <div className="grid-columns" style={{ gridTemplateColumns: `repeat(${visibleColumns.length}, 1fr)` }}>{
-                            visibleColumns.length && visibleColumns.map((col: any) => {
-                                let value = String(user[col.col_field])
-                                return <li key={`${col.col_title}-header`} className="grid-column-header">{value}</li>
+                            visibleColumns.length && visibleColumns.map((col: {[key: string]: any}, index: string) => {
+                                let value = String(flatUser[col.col_field])
+                                return <li key={`${col.col_title}-${value}-${index}`} className="grid-column-header">{value}</li>
                             })
                         }</div>
                     })}
