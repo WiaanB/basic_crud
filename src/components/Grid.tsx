@@ -49,7 +49,7 @@ function Grid(props: { Users: User[] }) {
                         return <div className="grid-columns" style={{ gridTemplateColumns: `repeat(${visibleColumns.length}, 1fr)` }}>{
                             visibleColumns.length && visibleColumns.map((col: {[key: string]: any}, index: string) => {
                                 let value = String(flatUser[col.col_field])
-                                return <li key={`${col.col_title}-${value}-${index}`} className="grid-column-header">{value}</li>
+                                return <li key={`${col.col_title}-${value}-${index}`} className="grid-column-value">{value}</li>
                             })
                         }</div>
                     })}
