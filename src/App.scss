@@ -6,6 +6,7 @@
 
 // Grid Styling
 .grid-container {
+  width: 50vw;
   display: grid;
   border: solid 2px black;
 
@@ -18,8 +19,10 @@
     }
 
     .grid-column-value {
+      max-width:300px;
       list-style: none;
       border: solid 2px blue;
+      text-overflow: ellipsis;
     }
   }
 }
