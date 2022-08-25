@@ -15,13 +15,18 @@
 
     .grid-column-header {
       list-style: none;
-      border: solid 2px red;
+      
+      &:nth-child(even) {
+        background-color:rgba(0,0,0,0.2);
+      }
+      &:nth-child(odd) {
+        background-color:rgba(0,0,0,0.4);
+      }
     }
 
     .grid-column-value {
       max-width:300px;
       list-style: none;
-      border: solid 2px blue;
       text-overflow: ellipsis;
     }
   }
